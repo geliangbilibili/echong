@@ -65,7 +65,7 @@
         </li>
         <li>
           <a href="#">
-            <span>美容香波 </span>
+            <span>美容香波</span>
           </a>
         </li>
       </ul>
