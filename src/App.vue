@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app"style="height: 2000px">
     <router-view></router-view>
     <FooterGuide></FooterGuide>
   </div>
@@ -21,4 +21,7 @@
     height 100%
     background #f5f5f5
     position relative
+  img
+    display block
+    width 100%
 </style>
