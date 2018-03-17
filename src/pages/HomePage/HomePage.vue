@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" v-if="home.lanmu_list">
     <!--头部-->
     <div class="all-header">
       <!--广告-->
@@ -22,14 +22,12 @@
           </div>
         </div>
         <!--导航-->
-        <div class="pet-tabs">
-          <div class="tab-item"><span class="text-current">首页</span></div>
-          <div class="tab-item"><span class="text">狗狗主粮</span></div>
-          <div class="tab-item"><span class="text">服饰城</span></div>
-          <div class="tab-item"><span class="text">医疗保健</span></div>
-          <div class="tab-item"><span class="text">零食玩具</span></div>
-          <!--<div class="tab-item"><span class="text">日出外用</span></div>
-          <div class="tab-item"><span class="text">美容香波</span></div>-->
+        <div class="pet-tabs swiper-container">
+          <div class="swiper-wrapper" >
+            <span class="swiper-slide" v-for="(arr,index) in home.menus" @click="test(index)"
+                  :style="{color:index===0?'yellowgreen':''}"
+            >{{arr.menu_name}}</span>
+          </div>
         </div>
       </header>
     </div>
@@ -38,50 +36,28 @@
       <!--轮播图1-->
       <div class="next-content swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="./images/slider1.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/slider2.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/slider3.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/slider4.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/slider5.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/slider-7.jpg">
+          <div class="swiper-slide" v-for="(item,index) in home.dog_banner">
+            <img :src="item">
           </div>
         </div>
         <!--swiper插件使用 小圆点-->
         <div class="swiper-pagination"></div>
       </div>
-      <!--大图1-->
-      <div class="big-dog">
-        <img src="./images/dog.jpg" style="width: 100%">
+      <!--大狗下半身-->
+      <div class="big-dog" >
+        <img :src="home.dog_img">
       </div>
       <!--导航栏-->
       <div class="good-list">
-        <ul class="good-list-wrapper">
-          <li><img src="./images/ect.jpg"></li>
-          <li><img src="./images/pptm.jpg" ></li>
-          <li><img src="./images/Ecgj.jpg"></li>
-          <li><img src="./images/cpys.jpg"></li>
-          <li><img src="./images/qctj.jpg"></li>
-          <li><img src="./images/xwkt.jpg"></li>
-          <li><img src="./images/mzlm.jpg"></li>
-          <li><img src="./images/cpsp.jpg"></li>
-          <li><img src="./images/mcs.jpg"></li>
-          <li><img src="./images/xjc.jpg"></li>
+        <ul class="good-list-wrapper" >
+          <li
+            v-for="(arr,index) in home.menu_list"
+          ><img :src="arr"></li>
         </ul>
       </div>
       <!--秒杀图-->
       <div class="miaosha">
-        <img src="./images/miaoshaa.jpg">
+        <img :src="home.miaosha">
       </div>
       <!--每日疯抢栏-->
       <div class="surprise">
@@ -140,28 +116,158 @@
           </ul>
         </div>
       </div>
+      <!--品牌力量-->
       <div class="power-brand">
-        <img src="./images/powerbrond.jpg">
+        <img :src="home.brand_power">
       </div>
+      <!--动态gif-->
+      <div class="bg-gif">
+        <img :src="home.gif">
+      </div>
+      <!--vip-->
+      <div class="vip">
+        <img :src="home.vip">
+      </div>
+      <!--extra-->
+      <div class="extra">
+        <div v-for="(arr,index) in home.vip_services"><img :src="arr"></div>
+      </div>
+      <!--大牌团购-->
+      <div class="dapai-tuangou">
+        <img :src="home.dapaituan">
+      </div>
+      <!--轮播图2-->
+      <div class="tuangou-list swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(item,index) in home.dapaituan_list">
+            <img :src="item">
+          </div>
+        </div>
+        <!--小圆点-->
+        <div class="swiper-pagination"></div>
+      </div>
+      <!--大牌好货-->
+      <div class="dapai-haohuo">
+        <img :src="home.haohuo">
+      </div>
+      <!--好货列表-->
+      <div class="haohuo-list" v-for="(item,index) in home.haohuo_list">
+        <div class="left">
+          <img v-for="(arr,index) in item.left" :src="arr">
+        </div>
+        <div class="right" >
+          <img v-for="(arr,index) in item.right" :src="arr">
+        </div>
+      </div>
+      <!--最惨奖-->
+      <div class="zuicanjiang">
+        <div class="zuicanjiang-img">
+          <img :src="home.zuican">
+        </div>
+        <div class="zuicanjiang-content">
+          <img :src="home.zuican_content">
+        </div>
+      </div>
+      <!--特别星球-->
+      <div class="special">
+        <img :src="home.special">
+      </div>
+      <!--潮品-->
+      <div class="special-list" >
+        <div class="left">
+          <img :src="home.special_list[0]">
+        </div>
+        <div class="right">
+          <img :src="home.special_list[1]">
+          <img :src="home.special_list[2]">
+        </div>
+      </div>
+      <!--特色栏目-->
+      <div class="special-lanmu">
+        <img :src="home.lanmu">
+      </div>
+      <!--特色列表-->
+      <div class="special1-list">
+        <div class="left1">
+          <img v-for="(arr,index) in home.lanmu_list.left" :src="arr">
+        </div>
+        <div class="left2">
+          <img v-for="(arr,index) in home.lanmu_list.right" :src="arr">
+        </div>
+      </div>
+      <!--底部-->
+      <div class="content-footer">
+        <p class="footer-top" ref="footer-tabs"  @click="footerTabs">
+          <span class="current">触屏版</span>
+          <span>手机客户端</span>
+          <span>关于我们</span>
+          <span>联系我们</span>
+        </p>
+        <p class="footer-bottom">
+          <span class="text">© wap.epet.com 版权：重庆易宠科技有限公司</span>
+        </p>
+      </div>
+    </div>
+    <div class="dog">
+      <img src="./images/godog.png">
     </div>
   </div>
 </template>
 <script>
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
+import {mapState} from 'vuex'
   export default{
     mounted(){
-      new Swiper('.next-content',{
-        loop:true,
-        pagination:{
-          el:'.swiper-pagination',
-          clickable:true,
-        },
-      });
-      new Swiper('.surprise-list',{
-        slidesPerView:3,
-        spaceBetween: 30,
+      this.$store.dispatch('getHomePage', ()=>{
+        this.$nextTick(()=>{
+          new Swiper('.pet-tabs',{
+            slidesPerView:5,/*数量*/
+            /*spaceBetween: 10,/!*间距*!/*/
+          });
+          new Swiper('.next-content',{
+            loop:true,
+            autoplay:{
+              delay:3000,
+              disableOnInteraction: false,
+            },
+            pagination:{
+              el:'.swiper-pagination',
+              clickable:true,
+            },
+          });
+          new Swiper('.surprise-list',{
+            slidesPerView:3.6,
+            spaceBetween: 30,
+          });
+          new Swiper('.tuangou-list',{
+            loop:true,
+            autoplay:{
+              delay:3000,
+              disableOnInteraction: false,
+            },
+            pagination:{
+              el:'.swiper-pagination',
+              clickable:true,
+            }
+          });
+        })
       })
+    },
+    methods:{
+      footerTabs(){},
+      test(index){
+        const spans = document.querySelector('.pet-tabs').getElementsByTagName('span')
+        const target = spans[index]
+
+        for(let i=0;i<spans.length;i++){
+          spans[i].style.color = ''
+        }
+        target.style.color = 'yellowgreen'
+      }
+    },
+    computed:{
+      ...mapState({home:'homepage'})
     }
   }
 </script>
@@ -213,28 +319,27 @@ import 'swiper/dist/css/swiper.min.css'
               color #333
         .pet-tabs
           margin-top 10px
+          height 20px
           display flex
-          .tab-item
+          text-align center
+          .swiper-wrapper
             flex 1
-            display flex
-            justify-content center
-            span
+            text-align  center
+            .swiper-slide
               height 20px
               color black
               padding-bottom 5px
               font-size 15px
-              &current
-                color #66AE59
-                box-shadow 0 -2px 0 #66AE59 inset
     .content
       .next-content
         width 100%
+        height 160px
       .good-list
         .good-list-wrapper
           display flex
           flex-wrap wrap
           >li
-            flex 20%
+            flex  20%
       .surprise
         .surprise-header
           clearFix()
@@ -269,6 +374,54 @@ import 'swiper/dist/css/swiper.min.css'
               .discount
                 font-size 12px
                 color #aaa
+      .extra
+        display flex
+        flex-wrap wrap
+        div
+          flex 0 0 50%
+      .haohuo-list
+        display flex
+        flex-wrap wrap
+        div
+          flex 0 0 50%
+      .special-list
+        display flex
+        .left
+          flex 1
+        .right
+          flex 1
+          img:last-child
+            margin-top -2px
+      .special1-list
+        display flex
+        flex-wrap wrap
+        div
+          flex 0 0 50%
+      .content-footer
+        padding 20px 20px
+        text-align center
+        .footer-top
+          font-size 15px
+          span
+            margin 5px
+          span.current
+            color red
+        .footer-bottom
+          margin-top 15px
+          font-size 12px
+      .dog
+        position fixed
+        right 0
+        bottom 100px
+        width 85px
+        height 94px
+        background-size 82px 46px
+        background-repeat no-repeat
+        animation blink 2s steps(1) infinite;
+
+
+
+
 
 
 

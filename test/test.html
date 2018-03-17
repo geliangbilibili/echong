@@ -5,22 +5,34 @@
   <meta name="viewport" content="width=device-width,user-scalable=no">
   <title>Title</title>
   <link rel="stylesheet" href="index.css">
+  <style>
+    .dog{
+      width: 85px;
+      height:94px;
+      background-image: url('godog.png');
+      background-repeat:no-repeat;
+      border:10px solid red;
+      background-position: 0 0;
+      animation:move1 2s ;
+      animation-timing-function:steps(1,end);
+      animation-iteration-count: infinite;
+    }
+    @keyframes move1{
+      0%{
+        background-position : 0 0;
+      }
+      50%{
+        background-position:-87px 0;
+      }
+      100%{
+        background-position : 0 0;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="wrapper">
-  <div class="top">
-    <div class="city">
-      狗狗|重庆
-    </div>
-    <div class="search">
-      <input type="text">
-      <span class="icon"></span>
-    </div>
-    <div class="msg">
-      <span class="icon"></span>
-    </div>
-  </div>
-  <div class="bottom"></div>
+<div class="dog">
+
 </div>
 </body>
 </html>
