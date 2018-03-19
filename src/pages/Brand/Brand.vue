@@ -18,11 +18,17 @@
 </template>
 <script>
   import {mapState} from 'vuex'
+  import BScroll from 'better-scroll'
   export default{
     mounted(){
       this.$store.dispatch('getBrand', ()=>{
         this.$nextTick(()=>{
+          if(this.brand ){
 
+          }
+          this.brand = new BScroll('.brand-box',{
+            click:true
+          })
         })
       })
     },
@@ -35,7 +41,6 @@
   @import "../../common/stylus/mixins.styl"
   .brand-box
     background: #eee;
-    height 100%
     overflow hidden
     .brand-content
       text-align center
@@ -50,8 +55,10 @@
         display flex
         flex-wrap wrap
         .brand-list-item
-          flex 33.33%
+          flex  0 0 33.33%
+          width 100%
           margin 0 0 20px
+          margin-top 10px
           font-size 13px
           .item-img
             box-sizing border-box

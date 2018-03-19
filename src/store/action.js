@@ -19,9 +19,10 @@ export default {
   },
 
   //异步获取分类
-  async getCateGory ({commit}){
+  async getCateGory ({commit},cb){
     const result = await reqCateGory()
     commit(RECEIVE_CATEGORY,{category: result.data})
+    cb&&cb();
   },
 
   //异步获取品牌

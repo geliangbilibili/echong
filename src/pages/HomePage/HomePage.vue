@@ -209,7 +209,6 @@
       </div>
     </div>
     <div class="dog">
-      <img src="./images/godog.png">
     </div>
   </div>
 </template>
@@ -334,6 +333,13 @@ import {mapState} from 'vuex'
       .next-content
         width 100%
         height 160px
+        .swiper-pagination
+          .swiper-pagination-bullet-active
+            display inline-block
+            background: #fff;
+            width 15px
+            height 6px
+            border-radius 3px
       .good-list
         .good-list-wrapper
           display flex
@@ -379,6 +385,15 @@ import {mapState} from 'vuex'
         flex-wrap wrap
         div
           flex 0 0 50%
+      .tuangou-list
+        .swiper-pagination
+          .swiper-pagination-bullet-active
+            display inline-block
+            background: #fff;
+            width 15px
+            height 6px
+            border-radius 3px
+
       .haohuo-list
         display flex
         flex-wrap wrap
@@ -409,33 +424,16 @@ import {mapState} from 'vuex'
         .footer-bottom
           margin-top 15px
           font-size 12px
-      .dog
-        position fixed
-        right 0
-        bottom 100px
-        width 85px
-        height 94px
-        background-size 82px 46px
-        background-repeat no-repeat
-        animation blink 2s steps(1) infinite;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .dog
+      position fixed
+      z-index 2
+      right 0
+      bottom 100px
+      width 41px
+      height 46px
+      background url('./images/godog.png');
+      background-size 82px 46px
+      background-repeat no-repeat
+      animation blink 2s steps(1) infinite;
+      background-position 0 0
 </style>

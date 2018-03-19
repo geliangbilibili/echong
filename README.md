@@ -25,3 +25,26 @@ methods：用于定义函数，绑定事件
   undefiend  false
   null  false
 4.如果外层是一个对象，则父元素就不要遍历循环，如果是一个数组，那就要遍历循环。v-for  
+
+
+day05
+1.background transparent 设置背景色为透明
+（transition包裹父级元素）
+2.报错404，路径错误
+3.做指引图标时，动画可以直接写在minxins里面，只要写中间的一个就够了，开头和结尾都为默认值
+问题:做第二页分类部分时，滚动条无法拉倒显示全部的消息
+
+4.父元素的高度必须设为100%！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
+
+day06
+1.BScroll的计算属性中，refresh表示什么
+分类页面，每点击一个就会显示一段新的内容。所以通过if判断表示，若点击了新的连接，则就重新计算（refresh）
+的高度。
+2.cate_list is not undefiend 
+  a.首先数据是从state中进行获取的，刚开始，state中的category定义的为空数据。所以不能直接使用。
+  b.通过if判断数据的长度，若为0(false)，则无法获取新的数据，反之则return获取
+  c.数据是从state中进行获取，接着通过action发送请求，传递给mutation。然后再传给state。此时获取的为新的数据
+3.当使用BScroll做拉弹簧效果时，如果点击事件没有效果，就在BScroll配置下面加上click：true
+4.//$router.push('/asdflasjdfl;jk')跳转不替换 .repalce('/asdfhlasdfjhl')替换 .back()返回
+        //$route.path

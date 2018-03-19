@@ -6,7 +6,7 @@
       </span>
       <span>首页</span>
     </div>
-    <div class="guide_item" @click="goto('/classaify')" :class="{on: $route.path=='/classaify'}">
+    <div class="guide_item" @click="goto('/classaify')" :class="{on: $route.path.indexOf('/Classaify')>-1}">
       <span class="item_icon">
         <i class="iconfont icon-fenlei"></i>
       </span>
@@ -30,7 +30,7 @@
   export default{
     methods:{
       goto(path){
-        this.$router.replace(path)
+        this.$router.push(path)
       }
     }
   }
@@ -57,7 +57,7 @@
       margin 5px
       color #999999
       &.on
-        color #84BE78
+        color $green
       span
         font-size 10px
         margin-top 2px
